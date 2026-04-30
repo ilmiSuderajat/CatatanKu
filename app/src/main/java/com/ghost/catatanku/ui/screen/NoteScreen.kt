@@ -11,7 +11,7 @@ import com.ghost.catatanku.ui.components.NoteCard
 import com.ghost.catatanku.ui.viewmodel.NoteViewModel
 
 @Composable
-fun NoteScreen(viewModel: NoteViewModel, modifier: Modifier = Modifier) {
+fun NoteScreen(viewModel: NoteViewModel, modifier: Modifier = Modifier, onNoteClick: (String) -> Unit) {
     val notes = viewModel.notes.value
 
 
@@ -22,7 +22,9 @@ fun NoteScreen(viewModel: NoteViewModel, modifier: Modifier = Modifier) {
         items(notes) { note ->
             NoteCard(
                 note = note,
-                onClick = {} // kosong dulu, nanti diisi navController
+                onClick = {
+                    onNoteClick(note.id)
+                } // kosong dulu, nanti diisi navController
             )
         }
     }
